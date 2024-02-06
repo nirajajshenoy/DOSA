@@ -1,8 +1,12 @@
 import Fastify from "fastify";
 import mongoose from "mongoose";
 import DataModel from "./dataModel.js";
+import cors from "@fastify/cors"
 
 const fastify = Fastify({ logger: true });
+fastify.register(cors, {
+    origin: true
+})
 let url = "mongodb+srv://nirajashenoy:Srinav2017@cluster0.63qi020.mongodb.net/Devops?retryWrites=true&w=majority"
 mongoose.connect(url)
 fastify.get("/", async (request, reply) => {
